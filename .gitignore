@@ -1,6 +1,24 @@
+# Dependencies
 node_modules/
-.idea/
+
+# Environment variables
 .env
 .env*.local
 
+# IDEs & OS
+.idea/
+.vscode/
+.DS_Store
+
+# Logs
+*.log
+npm-debug.log*
+
+# Prisma Generated Client
 /src/generated/prisma
+
+# Agent & AI Tooling local configurations
+.agents/
+.claude/
+.windsurf/
+skills-lock.json
