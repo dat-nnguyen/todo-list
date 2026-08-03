@@ -7,8 +7,9 @@ export const registerUser = async ({email, password, name}) => {
     const existingUser = await prisma.user.findUnique({ where: { email } });
 
     if (existingUser) {
+        const error = new Error('User already exists');
         error.statusCode = 400;
-        throw new Error('User already exists');
+        throw error;
     }
 
     // hashing password 
@@ -40,15 +41,17 @@ export const loginUser = async ({email, password}) => {
     });
 
     if (!user) {
+        const error = new Error('Invalid mail or password');
         error.statusCode = 401;
-        throw new Error('Invalid mail or password')
+        throw error;
     }
 
     const isPasswordValid = await bcrypt.compare(password, user.password);
 
     if (!isPasswordValid) {
+        const error = new Error('Invalid mail or password');
         error.statusCode = 401;
-        throw new Error('Invalid mail or password');
+        throw error;
     }
     //generate JWT token
     const token = jwt.sign(
