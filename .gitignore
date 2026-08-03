@@ -14,8 +14,12 @@ node_modules/
 *.log
 npm-debug.log*
 
-# Prisma Generated Client
+# Prisma Generated Client & Local Databases
 /src/generated/prisma
+*.db
+*.db-journal
+*.sqlite
+*.sqlite-wal
 
 # Agent & AI Tooling local configurations
 .agents/
