@@ -1,4 +1,6 @@
 import express from 'express'
+import swaggerUi from 'swagger-ui-express'
+import swaggerSpec from './config/swagger.js';
 import authRoutes from './routes/authRoutes.js';
 import todoRoutes from './routes/todoRoutes.js';
 import { errorHandler } from './middlewares/errorMiddleware.js';
@@ -6,6 +8,7 @@ import { errorHandler } from './middlewares/errorMiddleware.js';
 const app = express();
 
 app.use(express.json());
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 app.get('/health', (req, res) => {
     res.status(200).json({
