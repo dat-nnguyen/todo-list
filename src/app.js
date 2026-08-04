@@ -1,5 +1,6 @@
 import express from 'express'
 import authRoutes from './routes/authRoutes.js';
+import todoRoutes from './routes/todoRoutes.js';
 import { errorHandler } from './middlewares/errorMiddleware.js';
 
 const app = express();
@@ -14,6 +15,7 @@ app.get('/health', (req, res) => {
 });
 // API routes
 app.use('/api/auth', authRoutes);
+app.use('/api/todos', todoRoutes);
 // Global error handler
 app.use(errorHandler);
 
